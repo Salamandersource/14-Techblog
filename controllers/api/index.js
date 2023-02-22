@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const apiRoutes = require("./api");
+const postRoutes = require("./api/post-routes");
 
-//const dishRoutes = require('./dish-routes.js');
-
-//router.use('/dish', dishRoutes);
+router.use("/post", postRoutes);
+router.use("/api", apiRoutes);
 
 module.exports = router;

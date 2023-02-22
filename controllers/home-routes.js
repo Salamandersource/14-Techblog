@@ -1,10 +1,14 @@
 const router = require("express").Router();
+const Post = require("../models/Post");
 //const Dish = require('../models/Dish');
 
-// route to get all dishes
+// route to get all
 router.get("/", async (req, res) => {
-  console.log("inside home-routes.js");
-  res.render("all");
+  const postData = await Post.findAll().catch((err) => {
+    res.json(err);
+  });
+  const posts = postData.map((post) => post.get({ plain: true }));
+  res.render("all", { posts });
 });
 
 module.exports = router;
