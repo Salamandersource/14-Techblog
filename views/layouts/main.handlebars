@@ -9,11 +9,13 @@
   <div class="flex-column justify-space-around">
     <header class="flex-column">
       <nav class= "display-flex justify-space-between align-center p-2"> 
-        <a href="">Home</a>
-        <a href="">Dashboard</a>
-        <a href="">Login</a>
-        <a href="">Logout</a>
-        
+        <a href="/"<button class="btn btn-primary" type="submit">HOME</button></a>
+        <a href="/dashboard" <button class="btn btn-primary" type="submit">DASHBOARD</button></a>
+      {{#if loggedIn}}
+      <button id="logout" class="btn btn-primary">LOGOUT</button>
+      {{else}}
+      <a href="/login"><button id="logout" class="btn btn-primary">LOGIN</button></a>
+      {{/if}}
 
        </nav>
       <h1>
@@ -26,7 +28,13 @@
     <footer> 
       <p>made by Matthew</p>
     </footer>
+
   </div>
+  {{#if loggedIn}}
+    <script src="/js/dashboard.js"></script>
+  {{else}}
+    <script src="/js/login.js"></script>
+  {{/if}}
   </body>
 
 </html>
