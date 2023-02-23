@@ -21,6 +21,15 @@ Post.init(
     },
   },
   {
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+  },
+  {
     sequelize,
     freezeTableName: true,
     underscored: true,
