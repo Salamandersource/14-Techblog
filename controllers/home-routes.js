@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
     res.json(err);
   });
   const posts = postData.map((post) => post.get({ plain: true }));
-  res.render("homepage", { posts, loggedIn: req.session.loggedIn });
+  res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
 });
 
 router.get("/login", (req, res) => {
@@ -36,7 +36,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   } catch (err) {
     res.json(err);
   }
-  // res.redirect('/')
+  res.redirect("/");
 });
 
 router.get("/post/:id", withAuth, async (req, res) => {

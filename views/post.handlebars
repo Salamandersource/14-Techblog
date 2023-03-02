@@ -1,0 +1,48 @@
+<div class="m-4 flex-column justify-center mx-auto w-50">
+  <div class="btn btn-light">
+    <h2>{{post.title}}</h2>
+    <h5>{{post.body}}</h5>
+    <p>Posted by: {{post.user.username}}</p>
+    <p>Created: {{formatDate post.createdAt}}</p>
+    <button class="btn-red show-update"> <p>Update post</p> </button>
+    <button class="btn-red show-comment"> <p>Add a comment</p> </button>
+    <form class="form update-post-form hidden">
+      <div class="form-group">
+        <label for="post-name">Post Title:</label>
+        <input class="form-input" type="text" id="post-name" name="post-name" />
+      </div>
+      <div class="form-group">
+        <label for="post-body">Post Body:</label>
+        <input class="form-input" type="text" id="post-body" name="post-body" />
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary" data-id="{{post.id}}">Update</button>
+      </div>
+    </form>
+    <form class="form new-comment-form mt-4 hidden">
+      <div class="form-group">
+        <label>Comment:</label>
+        <input class="form-input" type="text" id="comment-body" name="comment-body" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" data-id="{{post.id}}">Add</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="flex-column justify-center">
+    <h3 class="mt-4 flex-column align-center">Comments:</h3>
+    {{#each comments as |comment|}}
+      <div class="m-1 flex-column justify-center">
+        <div class="post-list btn btn-light">
+          <h5>{{comment.body}}</h5>
+          <p>From: {{comment.user.username}}</p>
+          <p>{{formatDate comment.createdAt}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+</div>
+
+<script src="/js/post.js"></script>

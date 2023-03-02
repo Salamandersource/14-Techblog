@@ -1,3 +1,4 @@
+// const sequelize = require("sequelize");
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -19,8 +20,6 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-  },
-  {
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -29,6 +28,7 @@ Post.init(
       },
     },
   },
+
   {
     sequelize,
     freezeTableName: true,
